@@ -62,7 +62,7 @@ src/
 ├── pages/           # Pages principales
 ├── hooks/           # Custom hooks
 ├── services/        # API calls
-├── store/           # Redux store
+├── contexts/           # context
 ├── types/           # Types TypeScript
 └── utils/           # Fonctions utilitaires
 ```

@@ -1,1 +1,137 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 @import "tailwindcss";
+
+@theme {
+    /* Police */
+    --font-sans: "Inter", "system-ui", "sans-serif";
+
+    /* Couleurs - Format : --color-{nom} */
+    --color-primary: #000000;
+    --color-primary-foreground: #FFFFFF;
+
+    --color-secondary: #F3F4F6;
+    --color-secondary-foreground: #1F2937;
+
+    /* Accent */
+    --color-accent-blue: #3B82F6;
+    --color-accent-green: #10B981;
+    --color-accent-red: #EF4444;
+    --color-accent-yellow: #F59E0B;
+    --color-accent-purple: #A855F7;
+
+    /* Status */
+    --color-status-completed: #10B981;
+    --color-status-processing: #3B82F6;
+    --color-status-pending: #F59E0B;
+    --color-status-shipped: #A855F7;
+    --color-status-cancelled: #EF4444;
+    --color-status-active: #10B981;
+
+    /* Backgrounds */
+    --color-background: #F9FAFB;
+    --color-background-card: #FFFFFF;
+    --color-background-sidebar: #FFFFFF;
+
+    /* Text */
+    --color-text-primary: #111827;
+    --color-text-secondary: #6B7280;
+    --color-text-tertiary: #9CA3AF;
+    --color-text-inverse: #FFFFFF;
+
+    /* Spacing */
+    --spacing-18: 4.5rem;
+    --spacing-88: 22rem;
+    --spacing-128: 32rem;
+
+    /* Shadows */
+    --shadow-card: 0 1px 3px 0 rgb(0 0 0 / 0.1);
+
+    /* Animations */
+    --animate-fade-in: fadeIn 0.3s ease-in-out;
+    --animate-slide-in: slideIn 0.3s ease-in-out;
+    --animate-slide-down: slideDown 0.2s ease-out;
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+
+        to {
+            opacity: 1;
+        }
+    }
+
+    @keyframes slideIn {
+        from {
+            transform: translateX(-100%);
+        }
+
+        to {
+            transform: translateX(0);
+        }
+    }
+
+    @keyframes slideDown {
+        from {
+            transform: translateY(-10px);
+            opacity: 0;
+        }
+
+        to {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+}
+
+/* --- Base & Reset --- */
+@layer base {
+    body {
+        @apply bg-background text-text-primary antialiased;
+        font-family: var(--font-sans);
+    }
+
+    /* Scrollbar personnalisé */
+    ::-webkit-scrollbar {
+        @apply w-2 h-2;
+    }
+
+    ::-webkit-scrollbar-track {
+        @apply bg-gray-100;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        @apply bg-gray-300 rounded-full hover:bg-gray-400;
+    }
+}
+
+/* --- Utility Classes --- */
+@layer utilities {
+    .card {
+        @apply bg-background-card rounded-lg shadow-card;
+    }
+
+    .page-container {
+        @apply p-6;
+    }
+
+    .section-title {
+        @apply text-2xl font-bold text-text-primary mb-6;
+    }
+
+    .skeleton {
+        animation: shimmer 2s infinite linear;
+        background: linear-gradient(to right, #f0f0f0 4%, #e0e0e0 25%, #f0f0f0 36%);
+        background-size: 1000px 100%;
+    }
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: -1000px 0;
+    }
+
+    100% {
+        background-position: 1000px 0;
+    }
+}
