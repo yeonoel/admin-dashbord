@@ -2,14 +2,18 @@ import { ChartNoAxesGantt, Menu } from "lucide-react";
 import { useState } from "react";
 import { MobileSidebar } from "../MobileSidebar/MobileSidebar";
 
-export function Header() {
-    const [isOpen, setIsOpen] = useState(false);
+interface HeaderProps {
+    onMenuClick: () => void
+}
+
+export function Header({ onMenuClick }: HeaderProps) {
+
     return (
         <>
             <div className="flex justify-between items-center p-4 bg-white border-b border-border">
                 {/* LEFT */}
                 <div className="flex items-center gap-3">
-                    <ChartNoAxesGantt className="w-6 h-6" onClick={() => setIsOpen(!isOpen)} />
+                    <ChartNoAxesGantt className="w-6 h-6 md:hidden" onClick={onMenuClick} />
                     <span className="text-lg font-semibold">Overview</span>
                 </div>
 
@@ -25,9 +29,6 @@ export function Header() {
                     </div>
                 </div>
             </div>
-
-            {/* MOBILE SIDEBAR */}
-            <MobileSidebar open={isOpen} onClose={() => setIsOpen(false)} />
         </>
     );
 }

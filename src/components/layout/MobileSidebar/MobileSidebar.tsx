@@ -1,4 +1,5 @@
 import { ArrowLeftToLine, ChartColumn, LogOut, PanelsTopLeft, ShoppingBasket, ShoppingCart, SlidersHorizontal, Star, Users } from "lucide-react";
+import { NavLink } from "react-router-dom";
 
 interface MobileSidebarProps {
     open: boolean;
@@ -7,6 +8,8 @@ interface MobileSidebarProps {
 
 export function MobileSidebar({ open, onClose }: MobileSidebarProps) {
     if (!open) return null;
+    const linkClass =
+        "flex items-center gap-2 p-2 rounded-lg text-sm hover:bg-gray-100 focus:bg-gray-900 focus:text-white";
 
     return (
         <div className="fixed inset-0 z-50 flex">
@@ -28,39 +31,38 @@ export function MobileSidebar({ open, onClose }: MobileSidebarProps) {
                     <span onClick={onClose}><ArrowLeftToLine size={16} strokeWidth={1.75} /></span>
                 </div>
                 <nav className="space-y-2">
-                    <a href="#"
-                        className="flex items-center gap-2 p-2 rounded-lg text-sm hover:bg-gray-100 focus:bg-gray-900 focus:text-primary-foreground">
+                    <NavLink to="/" className={linkClass} onClick={onClose}>
                         <PanelsTopLeft className="w-3.5 h-3.5" />
                         <span>Overview</span>
-                    </a>
+                    </NavLink>
 
-                    <a href="#" className="flex items-center gap-2 p-2 text-sm rounded-lg hover:bg-gray-100 focus:bg-gray-900 focus:text-primary-foreground">
+                    <NavLink to="/orders" className={linkClass} onClick={onClose}>
                         <ShoppingCart className="w-3.5 h-3.5" />
                         <span>Orders</span>
-                    </a>
+                    </NavLink>
 
-                    <a href="#" className="flex items-center gap-2 p-2 text-sm rounded-lg hover:bg-gray-100 focus:bg-gray-900 focus:text-primary-foreground">
+                    <NavLink to="/products" className={linkClass} onClick={onClose}>
                         <ShoppingBasket className="w-3.5 h-3.5" />
                         <span>Products</span>
-                    </a>
+                    </NavLink>
 
-                    <a href="#" className="flex items-center gap-2 p-2 text-sm rounded-ld hover:bg-gray-100 focus:bg-gray-900 focus:text-primary-foreground">
+                    <NavLink to="/customers" className={linkClass} onClick={onClose}>
                         <Users className="w-3.5 h-3.5" />
                         <span>Customers</span>
-                    </a>
+                    </NavLink>
 
-                    <a href="#" className="flex items-center gap-2 p-2 text-sm rounded-lg hover:bg-gray-100 focus:bg-gray-900 focus:text-primary-foreground">
+                    <NavLink to="/analytics" className={linkClass} onClick={onClose}>
                         <ChartColumn className="w-3.5 h-3.5" />
                         <span>Analytics</span>
-                    </a>
+                    </NavLink>
 
-                    <a href="#" className="flex items-center gap-2 p-2 rounded-lg text-sm hover:bg-gray-100 focus:bg-gray-900 focus:text-primary-foreground">
+                    <NavLink to="/settings" className={linkClass} onClick={onClose}>
                         <SlidersHorizontal className="w-3.5 h-3.5" />
                         <span>Settings</span>
-                    </a>
+                    </NavLink>
                 </nav>
                 <div className="border-t border-border p-2 mt-auto">
-                    <button className=" flex items-center gap-2 p-1.5 rounded-lg text-xs hover:bg-gray-100 focus:bg-gray-900 focus:text-primary-foreground ">
+                    <button className="flex items-center gap-2 p-1.5 rounded-lg text-xs hover:bg-gray-100 focus:bg-gray-900 focus:text-primary-foreground ">
                         <LogOut className="w-5 h-5" />
                         <span> Exit dashboard</span>
                     </button>
