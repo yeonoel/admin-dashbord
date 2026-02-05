@@ -6,19 +6,30 @@ import { Products } from "./pages/products/Products"
 import { Customers } from "./pages/customers/Customers"
 import Settings from "./pages/settings/settings"
 import { Analytics } from "./pages/analytics/Analytics"
+import { ThemeProvider } from "./context/ThemeContext"
+import { AuthProvider } from "./context/AuthContext"
+import { PrivateRoute } from "./components/common/PrivateRoutes/PrivateRoute"
+import Login from "./pages/Login/Login"
 function App() {
   return (
     <BrowserRouter>
-      <Routes>
-        <Route element={<MainLayout />}>
-          <Route path="/" element={<Overview />} />
-          <Route path="/orders" element={<Orders />} />
-          <Route path="/products" element={<Products />} />
-          <Route path="/customers" element={<Customers />} />
-          <Route path="/analytics" element={<Analytics />} />
-          <Route path="/settings" element={<Settings />} />
-        </Route>
-      </Routes>
+      <ThemeProvider>
+        <AuthProvider>
+          <Routes>
+            <Route path="/login" element={<Login />} />
+            <Route element={<PrivateRoute />}>
+              <Route element={<MainLayout />}>
+                <Route path="/" element={<Overview />} />
+                <Route path="/orders" element={<Orders />} />
+                <Route path="/products" element={<Products />} />
+                <Route path="/customers" element={<Customers />} />
+                <Route path="/analytics" element={<Analytics />} />
+                <Route path="/settings" element={<Settings />} />
+              </Route>
+            </Route>
+          </Routes>
+        </AuthProvider>
+      </ThemeProvider>
     </BrowserRouter>
 
   )

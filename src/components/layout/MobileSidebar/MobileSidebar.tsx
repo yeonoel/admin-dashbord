@@ -1,5 +1,6 @@
 import { ArrowLeftToLine, ChartColumn, LogOut, PanelsTopLeft, ShoppingBasket, ShoppingCart, SlidersHorizontal, Star, Users } from "lucide-react";
 import { NavLink } from "react-router-dom";
+import { useAuth } from "../../../hooks/useAuth";
 
 interface MobileSidebarProps {
     open: boolean;
@@ -8,6 +9,10 @@ interface MobileSidebarProps {
 
 export function MobileSidebar({ open, onClose }: MobileSidebarProps) {
     if (!open) return null;
+    const { logout } = useAuth();
+    const handleLogout = () => {
+        logout();
+    }
     const linkClass =
         "flex items-center gap-2 p-2 rounded-lg text-sm hover:bg-gray-100 focus:bg-gray-900 focus:text-white";
 
@@ -21,7 +26,7 @@ export function MobileSidebar({ open, onClose }: MobileSidebarProps) {
 
             {/* Menu qui glisse */}
             <aside className="flex flex-col relative w-64 bg-white h-full p-4 shadow-lg">
-                <div className="flex items-center justify-between mb-4 border-b border-border pb-5">
+                <div className="flex items-center justify-between mb-4 border-b border-border pb-6">
                     <h1 className=" font-bold flex items-center gap-2">
                         <span className="w-7 h-7 bg-black text-white flex items-center justify-center rounded-full">
                             <Star size={15} />
@@ -62,7 +67,7 @@ export function MobileSidebar({ open, onClose }: MobileSidebarProps) {
                     </NavLink>
                 </nav>
                 <div className="border-t border-border p-2 mt-auto">
-                    <button className="flex items-center gap-2 p-1.5 rounded-lg text-xs hover:bg-gray-100 focus:bg-gray-900 focus:text-primary-foreground ">
+                    <button onClick={handleLogout} className="flex items-center gap-2 p-1.5 rounded-lg text-xs hover:bg-gray-100 focus:bg-gray-900 focus:text-primary-foreground ">
                         <LogOut className="w-5 h-5" />
                         <span> Exit dashboard</span>
                     </button>

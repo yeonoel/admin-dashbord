@@ -5,11 +5,10 @@ export type OrderStatus = "pending" | "paid" | "shipped" | "delivered" | "cancel
 export type PaymentMethod = "card" | "mobile_money" | "cash_on_delivery";
 
 export interface User {
-  id: string;
-  name: string;
-  email: string;
-  role: UserRole;
-  createdAt?: string;
+    id: string;
+    firstName: string;
+    lastName: string;
+    email: string;
 }
 
 
