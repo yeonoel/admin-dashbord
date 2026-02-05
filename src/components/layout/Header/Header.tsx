@@ -1,4 +1,4 @@
-import { ChartNoAxesGantt, Menu } from "lucide-react";
+import { ChartNoAxesGantt, } from "lucide-react";
 import { useAuth } from "../../../hooks/useAuth";
 
 interface HeaderProps {

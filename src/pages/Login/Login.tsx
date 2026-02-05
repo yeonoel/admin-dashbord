@@ -1,27 +1,16 @@
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import * as yup from "yup";
 import { useAuth } from "../../hooks/useAuth";
 import { Input } from "../../components/common/Input/Input";
 import { Button } from "../../components/common/Button/Button";
 import { Lock, Mail, Star } from "lucide-react";
-import toast from "react-hot-toast";
-
-interface LoginFormData {
-    email: string;
-    password: string;
-}
-
-const schema = yup.object({
-    email: yup.string().email("Invalid email").required("L'Email est obligatoire"),
-    password: yup.string().min(4, "Min 4 caractères").required("Le mot de passe est obligatoire"),
-});
+import { loginSchema, type LoginFormData } from "./login.schema";
 
 export default function Login() {
     const { login, loading, error } = useAuth();
 
     const { register, handleSubmit, formState: { errors, isValid, isSubmitting } } = useForm<LoginFormData>({
-        resolver: yupResolver(schema),
+        resolver: yupResolver(loginSchema),
         mode: "onChange"
     });
 
@@ -63,7 +52,8 @@ export default function Login() {
                         <p className="text-sm text-red-500 text-center">{error}</p>
                     )}
 
-                    <Button type="submit"
+                    <Button
+                        type="submit"
                         className="w-full"
                         loading={loading}
                         disabled={!isValid || isSubmitting}>
