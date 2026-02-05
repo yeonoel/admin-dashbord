@@ -5,7 +5,7 @@ import { useAuth } from "../../hooks/useAuth";
 import { Input } from "../../components/common/Input/Input";
 import { Button } from "../../components/common/Button/Button";
 import { Lock, Mail, Star } from "lucide-react";
-import { Navigate, useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
 interface LoginFormData {
     email: string;
@@ -20,8 +20,9 @@ const schema = yup.object({
 export default function Login() {
     const { login, loading, error } = useAuth();
 
-    const { register, handleSubmit, formState: { errors } } = useForm<LoginFormData>({
+    const { register, handleSubmit, formState: { errors, isValid, isSubmitting } } = useForm<LoginFormData>({
         resolver: yupResolver(schema),
+        mode: "onChange"
     });
 
     const onSubmit = async (data: LoginFormData) => {
@@ -29,7 +30,7 @@ export default function Login() {
     };
 
     return (
-        <div className="min-h-screen flex items-center justify-center bg-gray-50">
+        <div className="min-h-screen bg-gradient-cinematic flex items-center justify-center">
             <div className="w-full max-w-md bg-white p-8 rounded-2xl shadow">
                 <div className="flex flex-col items-center justify-center space-y-5">
                     <span className="w-14 h-14 bg-black text-white flex items-center justify-center  rounded-full">
@@ -62,7 +63,10 @@ export default function Login() {
                         <p className="text-sm text-red-500 text-center">{error}</p>
                     )}
 
-                    <Button type="submit" className="w-full" loading={loading} >
+                    <Button type="submit"
+                        className="w-full"
+                        loading={loading}
+                        disabled={!isValid || isSubmitting}>
                         Se connecter
                     </Button>
                     <p className="cursor-pointer text-sm text-gray-500 text-center curso"><small>Besoin d'aide ? Contactez le support</small></p>

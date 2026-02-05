@@ -102,6 +102,15 @@
     --animate-slide-in: slideIn 0.3s ease-in-out;
     --animate-slide-down: slideDown 0.2s ease-out;
 
+    /* Gradiant complexe : Noir -> Bleu Noir -> Ligne Lumière -> Bleu Noir -> Noir */
+    --background-image-gradient-cinematic: linear-gradient(135deg,
+            #000000 0%,
+            #0a0f1a 35%,
+            #1e293b 49.5%,
+            #1e293b 50.5%,
+            #0a0f1a 65%,
+            #000000 100%);
+
 
     @keyframes fadeIn {
         from {

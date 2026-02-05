@@ -1,13 +1,19 @@
 import { ChartNoAxesGantt, Menu } from "lucide-react";
-import { useState } from "react";
-import { MobileSidebar } from "../MobileSidebar/MobileSidebar";
+import { useAuth } from "../../../hooks/useAuth";
 
 interface HeaderProps {
     onMenuClick: () => void
 }
 
 export function Header({ onMenuClick }: HeaderProps) {
+    const { user } = useAuth();
+    const firstletterFistName = user?.firstName.charAt(0).toUpperCase();
+    const firstletterLastName = user?.lastName.charAt(0).toUpperCase();
+    const firstName = user?.firstName || "Admin";
+    const lastName = user?.lastName || "User";
+    const email = user?.email || "adminemail@com";
 
+    console.log("user", user);
     return (
         <>
             <div className="flex justify-between items-center p-4 bg-white border-b border-border">
@@ -18,14 +24,15 @@ export function Header({ onMenuClick }: HeaderProps) {
                 </div>
 
                 {/* RIGHT */}
-                <div className="flex items-center gap-4">
-                    <div className="text-right">
-                        <p className="text-sm font-medium">Admin User</p>
-                        <p className="text-xs text-gray-500">adminemail@com</p>
+                <div className="flex items-center gap-4 ">
+                    <div className="text-right cursor-pointer">
+                        <p className="text-sm font-medium">{firstName} {lastName}</p>
+                        <p className="text-xs text-gray-500">{email}</p>
                     </div>
 
-                    <div className="w-9 h-9 rounded-full bg-black text-white flex items-center justify-center font-semibold">
-                        AU
+                    <div className="cursor-pointer w-9 h-9 rounded-full bg-black text-white flex items-center justify-center font-semibold">
+                        {firstletterFistName}
+                        {firstletterLastName}
                     </div>
                 </div>
             </div>

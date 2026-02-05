@@ -10,11 +10,13 @@ import { ThemeProvider } from "./context/ThemeContext"
 import { AuthProvider } from "./context/AuthContext"
 import { PrivateRoute } from "./components/common/PrivateRoutes/PrivateRoute"
 import Login from "./pages/Login/Login"
+import { Toaster } from "react-hot-toast"
 function App() {
   return (
     <BrowserRouter>
       <ThemeProvider>
         <AuthProvider>
+          <Toaster position="top-right" toastOptions={{ duration: 3000, style: { background: '#333', color: "#fff" } }} />
           <Routes>
             <Route path="/login" element={<Login />} />
             <Route element={<PrivateRoute />}>
