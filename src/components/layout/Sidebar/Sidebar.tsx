@@ -25,22 +25,22 @@ export function Sidebar() {
             <nav className="space-y-2">
                 <NavLink to="/" className={linkClass}>
                     <PanelsTopLeft className="w-3.5 h-3.5" />
-                    <span>Overview</span>
+                    <span>Dashboard</span>
                 </NavLink>
 
-                <NavLink to="/orders" className={linkClass}>
+                <NavLink to="/commandes" className={linkClass}>
                     <ShoppingCart className="w-3.5 h-3.5" />
-                    <span>Orders</span>
+                    <span>Commandes</span>
                 </NavLink>
 
-                <NavLink to="/products" className={linkClass}>
+                <NavLink to="/produits" className={linkClass}>
                     <ShoppingBasket className="w-3.5 h-3.5" />
-                    <span>Products</span>
+                    <span>Produits</span>
                 </NavLink>
 
-                <NavLink to="/customers" className={linkClass}>
+                <NavLink to="/clients" className={linkClass}>
                     <Users className="w-3.5 h-3.5" />
-                    <span>Customers</span>
+                    <span>Clients</span>
                 </NavLink>
 
                 <NavLink to="/analytics" className={linkClass}>
@@ -48,15 +48,15 @@ export function Sidebar() {
                     <span>Analytics</span>
                 </NavLink>
 
-                <NavLink to="/settings" className={linkClass}>
+                <NavLink to="/parametres" className={linkClass}>
                     <SlidersHorizontal className="w-3.5 h-3.5" />
-                    <span>Settings</span>
+                    <span>Parametres</span>
                 </NavLink>
             </nav>
             <div className="border-t border-border p-2 mt-auto">
                 <button onClick={handleLogout} className=" flex items-center gap-2 p-1.5 rounded-lg text-xs hover:bg-gray-100 focus:bg-gray-900 focus:text-primary-foreground ">
                     <LogOut className="w-5 h-5" />
-                    <span> Exit dashboard</span>
+                    <span> Quitter dashboard</span>
                 </button>
             </div>
         </aside>

@@ -1,9 +1,20 @@
 import { ChartNoAxesGantt, } from "lucide-react";
 import { useAuth } from "../../../hooks/useAuth";
+import { useLocation } from "react-router-dom";
 
 interface HeaderProps {
     onMenuClick: () => void
 }
+
+const pageTitles: Record<string, string> = {
+    "/": "Dashboard",
+    "/commandes": "Orders",
+    "/produits": "Products",
+    "/clients": "Customers",
+    "/analytics": "Analytics",
+    "/parametres": "Parametres",
+};
+
 
 export function Header({ onMenuClick }: HeaderProps) {
     const { user } = useAuth();
@@ -12,6 +23,9 @@ export function Header({ onMenuClick }: HeaderProps) {
     const firstName = user?.firstName || "Admin";
     const lastName = user?.lastName || "User";
     const email = user?.email || "adminemail@com";
+    const location = useLocation();
+
+    const title = pageTitles[location.pathname] || "overview";
 
     console.log("user", user);
     return (
@@ -20,7 +34,7 @@ export function Header({ onMenuClick }: HeaderProps) {
                 {/* LEFT */}
                 <div className="flex items-center gap-3">
                     <ChartNoAxesGantt className="w-6 h-6 md:hidden" onClick={onMenuClick} />
-                    <span className="text-lg font-semibold">Overview</span>
+                    <span className="text-lg font-semibold">{title}</span>
                 </div>
 
                 {/* RIGHT */}

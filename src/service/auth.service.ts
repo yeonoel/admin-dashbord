@@ -1,6 +1,6 @@
 import API_URL from "../config";
 import type { User } from "../types";
-import { apiFetch } from "./api";
+import { apiFetch } from "./api/api";
 
 interface LoginResponse {
     success: boolean;
