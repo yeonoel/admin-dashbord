@@ -14,14 +14,7 @@ interface StatCardProps {
     change?: PercentageChange;
 }
 
-export const StatCard = ({
-    title,
-    value,
-    icon: Icon,
-    iconBg,
-    iconColor,
-    change,
-}: StatCardProps) => {
+export const StatCard = ({ title, value, icon: Icon, iconBg, iconColor, change }: StatCardProps) => {
     return (
         <Card>
             <CardContent className="p-6">
@@ -37,11 +30,10 @@ export const StatCard = ({
                                 ) : (
                                     <TrendingDown className="w-4 h-4 text-red-600 mr-1" />
                                 )}
-                                <span
-                                    className={cn(
-                                        'font-medium',
-                                        change.isPositive ? 'text-green-600' : 'text-red-600'
-                                    )}
+                                <span className={cn(
+                                    'font-medium',
+                                    change.isPositive ? 'text-green-600' : 'text-red-600'
+                                )}
                                 >
                                     {change.isPositive ? '+' : ''}
                                     {change.percentage}%

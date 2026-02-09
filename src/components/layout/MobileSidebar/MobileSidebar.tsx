@@ -41,17 +41,17 @@ export function MobileSidebar({ open, onClose }: MobileSidebarProps) {
                         <span>Dashboard</span>
                     </NavLink>
 
-                    <NavLink to="/orders" className={linkClass} onClick={onClose}>
+                    <NavLink to="/commandes" className={linkClass} onClick={onClose}>
                         <ShoppingCart className="w-3.5 h-3.5" />
                         <span>Commandes</span>
                     </NavLink>
 
-                    <NavLink to="/products" className={linkClass} onClick={onClose}>
+                    <NavLink to="/produits" className={linkClass} onClick={onClose}>
                         <ShoppingBasket className="w-3.5 h-3.5" />
                         <span>Produits</span>
                     </NavLink>
 
-                    <NavLink to="/customers" className={linkClass} onClick={onClose}>
+                    <NavLink to="/clients" className={linkClass} onClick={onClose}>
                         <Users className="w-3.5 h-3.5" />
                         <span>Clients</span>
                     </NavLink>
@@ -61,7 +61,7 @@ export function MobileSidebar({ open, onClose }: MobileSidebarProps) {
                         <span>Analytics</span>
                     </NavLink>
 
-                    <NavLink to="/settings" className={linkClass} onClick={onClose}>
+                    <NavLink to="/parametres" className={linkClass} onClick={onClose}>
                         <SlidersHorizontal className="w-3.5 h-3.5" />
                         <span>Parametres</span>
                     </NavLink>
@@ -69,7 +69,7 @@ export function MobileSidebar({ open, onClose }: MobileSidebarProps) {
                 <div className="border-t border-border p-2 mt-auto">
                     <button onClick={handleLogout} className="flex items-center gap-2 p-1.5 rounded-lg text-xs hover:bg-gray-100 focus:bg-gray-900 focus:text-primary-foreground ">
                         <LogOut className="w-5 h-5" />
-                        <span> Quitter dashboard</span>
+                        <span>Quitter dashboard</span>
                     </button>
                 </div>
             </aside>

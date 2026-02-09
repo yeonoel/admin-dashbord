@@ -15,7 +15,6 @@ const pageTitles: Record<string, string> = {
     "/parametres": "Parametres",
 };
 
-
 export function Header({ onMenuClick }: HeaderProps) {
     const { user } = useAuth();
     const firstletterFistName = user?.firstName.charAt(0).toUpperCase();
@@ -27,7 +26,6 @@ export function Header({ onMenuClick }: HeaderProps) {
 
     const title = pageTitles[location.pathname] || "overview";
 
-    console.log("user", user);
     return (
         <>
             <div className="flex justify-between items-center p-4 bg-white border-b border-border">
